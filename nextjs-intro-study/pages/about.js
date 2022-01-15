@@ -1,3 +1,9 @@
+import NavBar from "../components/NavBar"
+
 export default function add(){
-    return  'Hfuckdf'
+    return  <div>
+        <NavBar/>
+        <div>gdgdgd</div>
+    </div>
+    
 }
