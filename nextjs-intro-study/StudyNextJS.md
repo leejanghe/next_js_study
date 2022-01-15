@@ -159,3 +159,22 @@ styled-jsx는 넥스트 프로젝트에 기본적으로 포함되어 있습니�
 
 <br />
 
+## Custom App
+
+nextJS 어플리케이션의 시작페이지를 커스텀화 할 수 있습니다. _app 과 _document으로 공통적으로 적용될 내용을 작성합니다. 그중에서 _app은 서버로 요청이 들어왔을 때 가장 먼저 실행되는 컴포넌트로, 페이지에 적용할 공통 레이아웃의 역할을 합니다.
+
+```js
+//기본 탬플릿
+//공통으로 사용하는 navbar나 css 등 적용 가능
+function App({Component, pageProps}) {
+    return (
+        <div>
+            <Component {...pageProps} />
+        </div>
+    )
+}
+
+export default App
+```
+
+주목적은 모든 컴포넌트에 공통으로 적용할 속성 관리를 합니다. 여기서 Component 속성값은 서버에 요청한 페이지가 됩니다. pageProps는 getInitialProps, getStaticProps, getServerSideProps 중 하나를 통해 페칭한 초기 속성값이 됩니다. 
