@@ -11,8 +11,15 @@ export default function Home(){
 
 
   return  <div>
-            <NavBar/>
-            <h1>{count}</h1>
+            <h1 className="active">{count}</h1>
+            <div className="active">gdgdgd</div>
             <button onClick={plusNum}>+</button>
+            <style jsx>{`
+                h1{
+                    color: red;
+                    font-size: 50px;
+                }
+            `}</style>
+            <h1>안녕하세요!</h1>
         </div>
 }

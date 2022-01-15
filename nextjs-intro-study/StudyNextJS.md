@@ -75,3 +75,87 @@ export default function App() {
 - router.back() : 직전 페이지로 돌아갑니다.
 - router.push("url") : 지정한 경로로 이동하며 히스토리 스택에 URL를 추가합니다.
 - router.replace("url") : 지정한 경로로 이동하나 히스토리 스택에 URL를 추가하지 않습니다.
+
+<br />
+
+## CSS Modules
+
+css를 사용할 때 클래스 이름을 고유한 값으로 자동으로 만들어서 컴포넌트 스타일 클래스 이름이 중첩되는 현상을 방지해 주는 기술을 css module이라고 한다. 고로 클래스명이 충돌하는 단점을 극복 할 수 있고 컴포넌트 단위로 스타일을 적용 할 때 유용하다. 
+
+<br />
+
+### 사용법
+
+파일명은 보통 파일명.module.css 라고 사용하며 적용법은 아래와 같다.
+
+<br />
+
+```js
+import styles from "./NavBar.module.css"
+
+function CssModule() {
+    return (
+        
+            <nav className={styles.nav}>
+                <h1>css 모듈</h1>
+            </nav>
+        
+    )
+}
+
+export default CssModule
+```
+
+만약 여려개의 클래스를 적용 할 때는 빽틱을 사용하면 된다.
+
+```js
+<Link href="/">
+    <a className={`${styles.link} ${router.pathname === '/'? styles.active:""}`}>Home</a>
+</Link>
+```
+
+<br />
+
+## Style JSX
+
+기존 리액트 어플리케이션은 크게 두 가지 방법으로 스타일을 꾸밀 수 있었습니다. 하나는 CSS나 SASS 등 별도의 스타일 파일을 생성해 관리하는 방식이고, 다른 하나는 컴포넌트 안에서 스타일을 작성하는 CSS-in-Js 라는 방식입니다. 이중 넥스트(Next.js)에서는 CSS-in-js 방식을 권장하며, styled-component와 유사한 styled-jsx 라는 도구를 활용합니다.
+
+<br />
+
+### styled-jsx 란 ?
+
+styled-jsx는 넥스트 프로젝트에 기본적으로 포함되어 있습니다. 이를 활용하기 위해서는 jsx 라는 값을 속성으로 갖는 style 태그를 컴포넌트 본문에 위치시킨 후, 적용할 CSS 스타일을 *문자열로 작성하면 됩니다.
+
+```js
+<>
+  <div className="msg">Hello, JoyCoding!</div>
+  // `(템플릿 문자열)으로 감싸진다! style 컴포넌트와 매우 유사
+  <style jsx>`
+    .msg {
+      font-size: 20px;
+      color : red;
+    }
+  `</style>
+</>
+```
+
+<br />
+
+### global 속성 사용하기
+
+스타일 태그에 global 속성을 추가하면 다른 컴포넌트의 클래스네임이 .msg 요소에도 스타일을 입힐 수 있습니다.
+
+```js
+<div>
+  <div className="msg">Hello, JoyCoding!</div>
+  <style jsx global>`
+    .msg {
+      font-size: 20px;
+      color : red;
+    }
+  `</style>
+</div>
+```
+
+<br />
+
