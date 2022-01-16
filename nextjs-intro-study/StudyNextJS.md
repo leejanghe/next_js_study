@@ -187,3 +187,59 @@ public폴더에 이미지를 꺼내 올때 `/이미지파일이름` 경로를 �
 
 <br />
 
+## api key 숨기기
+
+next.config.js를 활용해서 api key를 숨길수 있습니다. 
+
+<br />
+
+### #1. env 파일 만들기
+
+우선 env파일을 만들어서 숨기고 싶은 api 키를 작성합니다. 
+
+```js
+API_KEY=실제api키작성
+```
+
+<br />
+
+### #2. gitignore 숨기기
+
+깃이그노어 파일에 가서 `/env` 명시합니다. 그러면 깃 푸쉬할 때도 api key를 숨길수 있습니다. 주의 할점은 env파일과 gitignore파일이 동일 선상에 있어야 합니다.
+
+<br />
+
+### #3. next.config.js 활용
+
+config.js에서 rewrites라는 기능이 있습니다. 사용법은 아래와 같습니다. source는 유저가 이동하는 경로라고 생각하면 되고 destination은 source코드를 destination으로 다시 읽는 다라고 생각하면 좋습니다. (rewrites)
+
+```js
+const API_KEY = process.env.API_KEY;
+
+module.exports = {
+  reactStrictMode: true,
+  async rewrites() {
+    return [
+      {
+        source: '/api/movies',
+        destination: `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
+      },
+    ];
+  }
+}
+```
+
+고로 아래 예시 처럼 `/api/movies` 를 fetch했을때 위에 rewrites메서드를 통해 destination에 있는 주소로 읽게 됩니다. 또 한 브라우저 상에서도 본인의 api key를 숨길 수 있어 보안상에서도 좋습니다.
+
+```js
+  const [movieList, setMovieList] = useState([]);
+    useEffect(()=>{
+        (async ()=>{
+            const {results} = await(
+                await fetch(`/api/movies`)
+            ).json();
+            console.log(results)
+            setMovieList(results);
+        })();
+    },[])
+```
