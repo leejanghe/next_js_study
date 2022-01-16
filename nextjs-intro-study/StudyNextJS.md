@@ -178,3 +178,12 @@ export default App
 ```
 
 주목적은 모든 컴포넌트에 공통으로 적용할 속성 관리를 합니다. 여기서 Component 속성값은 서버에 요청한 페이지가 됩니다. pageProps는 getInitialProps, getStaticProps, getServerSideProps 중 하나를 통해 페칭한 초기 속성값이 됩니다. 
+
+<br />
+
+## public 활용
+
+public폴더에 이미지를 꺼내 올때 `/이미지파일이름` 경로를 작성하면 쉽게 이미지를 불러올수 있습니다.
+
+<br />
+

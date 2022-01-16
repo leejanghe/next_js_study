@@ -1,12 +1,13 @@
-import NavBar from "../components/NavBar"
+import LayOut from "../components/LayOut"
+import '../styles/globals.css'
 
 function App({Component, pageProps}) {
     return (
-        <div>
-            <NavBar />
+        
+            <LayOut>
             <Component {...pageProps} />
-            <h1>gdgd</h1>
-        </div>
+            </LayOut>
+        
     )
 }
 
