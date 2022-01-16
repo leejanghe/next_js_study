@@ -193,7 +193,7 @@ next.config.js를 활용해서 api key를 숨길수 있습니다.
 
 <br />
 
-### #1. env 파일 만들기
+### 1. env 파일 만들기
 
 우선 env파일을 만들어서 숨기고 싶은 api 키를 작성합니다. 
 
@@ -203,13 +203,13 @@ API_KEY=실제api키작성
 
 <br />
 
-### #2. gitignore 숨기기
+### 2. gitignore 숨기기
 
 깃이그노어 파일에 가서 `/env` 명시합니다. 그러면 깃 푸쉬할 때도 api key를 숨길수 있습니다. 주의 할점은 env파일과 gitignore파일이 동일 선상에 있어야 합니다.
 
 <br />
 
-### #3. next.config.js 활용
+### 3. next.config.js 활용
 
 config.js에서 rewrites라는 기능이 있습니다. 사용법은 아래와 같습니다. source는 유저가 이동하는 경로라고 생각하면 되고 destination은 source코드를 destination으로 다시 읽는 다라고 생각하면 좋습니다. (rewrites)
 
